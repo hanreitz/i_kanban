@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :require_login, only: [:show]
 
   def new
+    @user = User.new
   end
 
   def create
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :first_name, :last_name, :email, :organization, :password, :public)
+    params.require(:user).permit(:username, :first_name, :last_name, :email, :organization, :password, :password_confirmation, :public)
   end
 
   def require_login
