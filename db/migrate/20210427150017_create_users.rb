@@ -6,9 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :email
       t.string :organization
-      t.booleann, :public
-      t.string :default
-      t.string :true
+      t.boolean :public, default: true
 
       t.timestamps
     end
