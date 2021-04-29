@@ -1,0 +1,8 @@
+<br>
+<h3><%= @project.title %></h3><br>
+  <h5>Future Tasks:</h5>
+    <ul>
+    <% @project.future_tasks.each do |t| %>
+      <li><%= t.description %></li>
+    <% end %>
+    </ul>
