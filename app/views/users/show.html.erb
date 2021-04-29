@@ -1,3 +1,6 @@
+<%= flash[:alert] if flash[:alert] %>
+
+<%# Add logic to distinguish between page owner and page visitor, e.g., "Hannah's Projects" vs "My Projects" %>
 <h1>Welcome, <%= @user.first_name %>!</h1><br>
 
 <h3>My Projects:</h3>
@@ -5,4 +8,5 @@
   <%= render(@projects) || "No current projects" %>
 </ul>
 
+<%= link_to "Account", user_account_path %>
 <%= link_to "Log Out", logout_path, method: :post %>
