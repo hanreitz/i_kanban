@@ -4,7 +4,13 @@ class Project < ApplicationRecord
 
   validates_presence_of :title, :description
 
+  def owner_object
+    User.find_by(id: self.owner)
+  end
+
   def self.public_projects
-    self.all.select {|project| project.user.public == true }
+    self.all.select do |project|
+      project.owner_object.public == true
+    end
   end
 end
