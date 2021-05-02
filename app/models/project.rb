@@ -8,6 +8,10 @@ class Project < ApplicationRecord
     User.find_by(id: self.owner)
   end
 
+  def future_tasks
+    self.tasks.select {|t| t.category == "future"}
+  end
+
   def self.public_projects
     self.all.select do |project|
       project.owner_object.public == true
