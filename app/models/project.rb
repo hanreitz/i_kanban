@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   end
 
   def future_tasks
-    self.tasks.select {|t| t.category == "future"}
+    self.tasks.select {|t| t.category == "Future"}
   end
 
   def self.public_projects # refactor into scope method
