@@ -14,7 +14,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.create(task_params)
     if @task.save
-      redirect_to project_tasks_path(@task.project)
+      redirect_to project_path(@task.project)
     else
       render :new, alert: "Task could not be created."
     end

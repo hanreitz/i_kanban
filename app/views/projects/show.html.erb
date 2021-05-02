@@ -1,8 +1,28 @@
 <br>
-<h3><%= @project.title %></h3><br>
-  <h5>Future Tasks:</h5>
+<h2 style="text-align: center"><%= @project.title %></h2>
+  <div class="future" style="width: 33%; float: left">
+    <h3> Future Tasks </h3>
     <ul>
     <% @project.future_tasks.each do |t| %>
       <li><%= t.description %></li>
     <% end %>
     </ul>
+  </div>
+
+  <div class="current" style="width: 33%; float: left">
+    <h3> Current Tasks </h3>
+    <ul>
+    <% @project.current_tasks.each do |t| %>
+      <li><%= t.description %></li>
+    <% end %>
+    </ul>
+  </div>
+
+  <div class="complete" style="width: 33%; float: right">
+    <h3>Complete Tasks</h3>
+    <ul>
+    <% @project.complete_tasks.each do |t| %>
+      <li><%= t.description %></li>
+    <% end %>
+    </ul>
+  </div>
