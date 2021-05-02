@@ -12,7 +12,7 @@ class Project < ApplicationRecord
     self.tasks.select {|t| t.category == "future"}
   end
 
-  def self.public_projects
+  def self.public_projects # refactor into scope method
     self.all.select do |project|
       project.owner_object.public == true
     end
