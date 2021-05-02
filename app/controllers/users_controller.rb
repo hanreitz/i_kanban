@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show]
+  before_action :require_login, only: [:show, :account, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :account, :edit, :update]
 
+  def index
+    @public_users = User.select {|u| u.public == true }
+  end
+  
   def new
     @user = User.new
   end
@@ -15,25 +20,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-    @public_users = User.select {|u| u.public == true }
-  end
-
   def show
-    @user = current_user
     @projects = @user.projects
   end
 
   def account
-    @user = current_user
   end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     @user.update(user_params)
     if @user.valid?
       redirect_to user_path(@user), alert: "Account successfully updated."
@@ -56,6 +53,10 @@ class UsersController < ApplicationController
 
   def require_login
     redirect_to login_path, alert: "You must be logged in to view this page." unless session.include?(:user_id)
+  end
+
+  def set_user
+    @user = current_user
   end
 
 end
