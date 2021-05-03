@@ -3,7 +3,7 @@
 <h3><%= @user.username %>'s iKanBan Stats</h3>
 <%= @user.owned_projects.count %> project board(s) created<br>
 <%= @user.tasks.count %> task(s) created<br>
-<%= Task.completed_tasks(@user) %> tasks completed<br><br>
+<%= Task.category_tasks("Complete").tasks_by_user(@user) %> tasks completed<br><br>
 
 <%= button_to "Edit my account information", edit_user_path(@user), method: :get %><br>
 <%= button_to "Delete my account", user_path(@user), method: :delete, data: {confirm: 'Are you sure?'} %>
