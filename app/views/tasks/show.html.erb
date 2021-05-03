@@ -1,10 +1,12 @@
-<%= @task.description %>
+<h4><%= @task.description %>, added by <%= link_to @task.user.username, user_path(@task.user) %></h4><br><br>
 
-Due <%= @task.due_date %>
+Project Board: <%= @task.project.title %>, created by <%= link_to @task.project.owner_object.username, user_path(@task.project.owner_object) %><br><br>
 
-<%= @task.priority %> Priority
+Due <%= @task.due_date %><br><br>
 
-Stage in Process: <%= @task.category %> Task
+<%= @task.priority %> Priority<br><br>
 
-<%= link_to "Edit Task", edit_task_path(@task) %>
-<%= link_to "Delete Task", task_path(@task), method: :delete, data: {confirm: 'Are you sure?'} %>
+Stage in Process: <%= @task.category %> Task<br><br>
+
+<%= button_to "Edit Task", edit_task_path(@task), method: :get %><br>
+<%= button_to "Delete Task", task_path(@task), method: :delete, data: {confirm: 'Are you sure?'} %>
