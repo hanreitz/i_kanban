@@ -25,12 +25,23 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find_by(id: params[:id])
   end
 
   def update
+    @task.update(task_params)
+    if @task.valid?
+      redirect_to project_tasks_path(@task.project), alert: "Task successfully updated."
+    else
+      render :edit
+    end
   end
 
   def destroy
+    task = Task.find_by(id: params[:id])
+    project = task.project
+    task.delete
+    redirect_to project_tasks_path(project)
   end
 
   private

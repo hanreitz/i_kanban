@@ -1,17 +1,6 @@
 <h2>New Task</h2>
 <%= form_for @task do |f| %>
-  <%= f.hidden_field :user_id %>
-  <%= project_id_field(@task) %><br><br>
-
-  <%= f.label :due_date, "Due Date" %><br>
-  <%= f.date_field :due_date %><br><br>
-
-  <%= f.label :description %><br>
-  <%= f.text_area :description %><br><br>
-
-  <%= f.select :priority, ['High','Medium','Low'], prompt: 'Select Priority' %><br><br>
-
-  <%= f.select :category, ['Future','Current','Complete'], prompt: 'Select Category' %><br><br>
+  <%= render partial: 'form', locals: {f: f} %>
 
   <%= f.submit "Save Task" %>
 <% end %>
