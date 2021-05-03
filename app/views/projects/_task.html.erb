@@ -1,1 +1,8 @@
-<li><%= t.description %></li>
+<div class="#{task_type.lowercase}" style="width: 33%; float: left">
+<h3><%= task_type %> Tasks </h3>
+<ul>
+<% @project.task_type("#{task_type}").each do |t| %>
+  <li><%= t.description %></li>
+<% end %>
+</ul>
+</div>

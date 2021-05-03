@@ -1,28 +1,8 @@
 <br>
 <h2 style="text-align: center"><%= @project.title %></h2>
-  <div class="future" style="width: 33%; float: left">
-    <h3> Future Tasks </h3>
-    <ul>
-    <% @project.task_type("Future").each do |t| %>
-      <% render partial: 'task', locals: {t: t} %>
-    <% end %>
-    </ul>
-  </div>
 
-  <div class="current" style="width: 33%; float: left">
-    <h3> Current Tasks </h3>
-    <ul>
-    <% @project.task_type("Current").each do |t| %>
-      <% render partial: 'task', locals: {t: t} %>
-    <% end %>
-    </ul>
-  </div>
+  <%= render partial: 'task', locals: {task_type: "Future"} %>
 
-  <div class="complete" style="width: 33%; float: right">
-    <h3>Complete Tasks</h3>
-    <ul>
-    <% @project.task_type("Complete").each do |t| %>
-      <% render partial: 'task', locals: {t: t} %>
-    <% end %>
-    </ul>
-  </div>
+  <%= render partial: 'task', locals: {task_type: "Current"} %>
+
+  <%= render partial: 'task', locals: {task_type: "Complete"} %>
