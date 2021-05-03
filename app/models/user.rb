@@ -12,4 +12,5 @@ class User < ApplicationRecord
   def owned_projects
     Project.where(owner: self.id)
   end
+
 end

@@ -8,5 +8,5 @@
   <%= render partial: 'project', collection: @user.owned_projects || "No current projects" %>
 </ul>
 
-<%= link_to "Account", user_account_path %>
-<%= link_to "Log Out", logout_path, method: :post %>
+<%= button_to "Account", user_account_path, method: :get %><br>
+<%= button_to "Log Out", logout_path, method: :post %>
