@@ -3,9 +3,9 @@
 <%# Add logic to distinguish between page owner and page visitor, e.g., "Hannah's Projects" vs "My Projects" %>
 <h1>Welcome, <%= @user.first_name %>!</h1><br>
 
-<h3>My Projects:</h3>
+<h3>My Project Boards:</h3>
 <ul>
-  <%= render(@projects) || "No current projects" %>
+  <%= render partial: 'project', collection: @user.owned_projects || "No current projects" %>
 </ul>
 
 <%= link_to "Account", user_account_path %>
