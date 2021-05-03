@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   end
 
   def task_type(category)
-    self.tasks.select {|t| t.category == "#{category}"}
+    self.tasks.where(category: "#{category}")
   end
 
   scope :public_projects, -> { joins('INNER JOIN users ON projects.owner = users.id').where('users.public = true')}

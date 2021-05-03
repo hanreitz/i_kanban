@@ -2,7 +2,7 @@
 <br>
 <h3><%= @user.username %>'s iKanBan Stats</h3>
 <%= @user.owned_projects.count %> project board(s) created<br>
-<%= @count %> task(s) created<br>
+<%= @total_task_count %> task(s) created<br>
 <%= @complete_task_count %> task(s) completed<br><br>
 
 <%= button_to "Edit my account information", edit_user_path(@user), method: :get %><br>

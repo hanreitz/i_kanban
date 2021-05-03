@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def account
-    @count = Task.count_tasks_by_user(@user)
+    @total_task_count = Task.count_tasks_by_user(@user)
     @complete_task_count = Task.category_tasks("Complete").count_tasks_by_user(@user)
   end
 
