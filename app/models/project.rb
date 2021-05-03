@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   end
 
   def future_tasks
-    self.tasks.select {|t| t.category == "Future"}
+    Task.category_tasks("Future").tasks_by_project(self)
   end
 
   def current_tasks
