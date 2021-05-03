@@ -4,7 +4,7 @@
     <h3> Future Tasks </h3>
     <ul>
     <% @project.task_type("Future").each do |t| %>
-      <li><%= t.description %></li>
+      <% render partial: 'task', locals: {t: t} %>
     <% end %>
     </ul>
   </div>
@@ -13,7 +13,7 @@
     <h3> Current Tasks </h3>
     <ul>
     <% @project.task_type("Current").each do |t| %>
-      <li><%= t.description %></li>
+      <% render partial: 'task', locals: {t: t} %>
     <% end %>
     </ul>
   </div>
@@ -22,7 +22,7 @@
     <h3>Complete Tasks</h3>
     <ul>
     <% @project.task_type("Complete").each do |t| %>
-      <li><%= t.description %></li>
+      <% render partial: 'task', locals: {t: t} %>
     <% end %>
     </ul>
   </div>
