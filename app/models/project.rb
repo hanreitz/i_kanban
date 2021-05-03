@@ -8,21 +8,10 @@ class Project < ApplicationRecord
     User.find_by(id: self.owner)
   end
 
-  def future_tasks
-    Task.category_tasks("Future").tasks_by_project(self)
+  def task_type(category)
+    self.tasks.select {|t| t.category == "#{category}"}
   end
 
-  def current_tasks
-    self.tasks.select {|t| t.category == "Current"}
-  end
+  scope :public_projects, -> { joins('INNER JOIN users ON projects.owner = users.id').where('users.public = true')}
 
-  def complete_tasks
-    self.tasks.select {|t| t.category == "Complete"}
-  end
-
-  def self.public_projects # refactor into scope method
-    self.all.select do |project|
-      project.owner_object.public == true
-    end
-  end
 end
