@@ -37,6 +37,20 @@ class TasksController < ApplicationController
     end
   end
 
+  def advance_category
+    @task = Task.find_by(id: params[:id])
+    byebug
+    if @task.category == "Future"
+      @task.update(category: "Current")
+      redirect_to project_path(@task.project)
+    elsif @task.category == "Current"
+      @task.update(category: "Complete")
+      redirect_to project_path(@task.project)
+    elsif @task.category == "Complete"
+      redirect_to task_path(@task)
+    end
+  end
+
   def destroy
     task = Task.find_by(id: params[:id])
     project = task.project
