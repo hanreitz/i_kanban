@@ -1,8 +1,12 @@
 <br>
 <h2 style="text-align: center"><%= @project.title %></h2>
 
-  <%= render partial: 'task', locals: {task_type: "Future"} %>
+<%= render partial: 'task', locals: {type: "Future"} %>
 
-  <%= render partial: 'task', locals: {task_type: "Current"} %>
+<%= render partial: 'task', locals: {type: "Current"} %>
 
-  <%= render partial: 'task', locals: {task_type: "Complete"} %>
+<%= render partial: 'task', locals: {type: "Complete"} %>
+
+<div style="width: 100%; float: left">
+  <%= button_to "Add Task", new_project_task_path(project_id: @project.id), method: :get %>
+</div>

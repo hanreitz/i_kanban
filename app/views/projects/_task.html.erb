@@ -1,8 +1,12 @@
-<div class="#{task_type.lowercase}" style="width: 33%; float: left">
-<h3><%= task_type %> Tasks </h3>
+<div class="#{type.lowercase}" style="width: 33%; float: left">
+<h3><%= type %> Tasks </h3>
 <ul>
-<% @project.task_type("#{task_type}").each do |t| %>
-  <li><%= link_to "#{t.description}", task_path(t) %>  <%= button_to "<-", {controller: :tasks, action: :back_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'}  %><%= button_to "->", {controller: :tasks, action: :advance_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %></li>
+<% @project.task_type("#{type}").each do |t| %>
+  <li><%= link_to "#{t.description}", task_path(t) %>  
+  <%= button_to "<-", {controller: :tasks, action: :back_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'}  %>
+  <%= button_to "->", {controller: :tasks, action: :advance_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
+  </li><br>
 <% end %>
 </ul>
+<br><br>
 </div>

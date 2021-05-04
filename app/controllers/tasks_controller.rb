@@ -49,7 +49,7 @@ class TasksController < ApplicationController
   def destroy
     project = @task.project
     @task.delete
-    redirect_to project_tasks_path(project)
+    redirect_to project_path(project)
   end
 
   private
