@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :advance_category, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :advance_category, :back_category, :destroy]
   def index
     if params[:project_id]
       @tasks = Project.find_by(id: params[:project_id]).tasks
@@ -37,7 +37,12 @@ class TasksController < ApplicationController
   end
 
   def advance_category
-    @task.next_category
+    @task.change_category("+")
+    redirect_to project_path(@task.project)
+  end
+
+  def back_category
+    @task.change_category("-")
     redirect_to project_path(@task.project)
   end
 

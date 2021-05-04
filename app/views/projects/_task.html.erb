@@ -2,7 +2,7 @@
 <h3><%= task_type %> Tasks </h3>
 <ul>
 <% @project.task_type("#{task_type}").each do |t| %>
-  <li><%= link_to "#{t.description}", task_path(t) %><%= button_to "->", {controller: :tasks, action: :advance_category, id: t.id}, method: :post %></li>
+  <li><%= link_to "#{t.description}", task_path(t) %><%= button_to "<-", {controller: :tasks, action: :back_category, id: t.id}, method: :post %><%= button_to "->", {controller: :tasks, action: :advance_category, id: t.id}, method: :post %></li>
 <% end %>
 </ul>
 </div>

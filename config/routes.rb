@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
   get '/user/:id/account', to: 'users#account', as: 'user_account'
   post '/advance-category', to: 'tasks#advance_category', as: 'advance_category'
+  post '/back-category', to: 'tasks#back_category', as: 'back_category'
 
   resources :projects, only: [:show] do
     resources :tasks, only: [:index, :new, :show]
