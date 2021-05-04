@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
     @projects = Project.public_projects
   end
@@ -18,12 +18,30 @@ class ProjectsController < ApplicationController
   end
 
   def show 
-    @project = Project.find_by(id: params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    @project.update(project_params)
+    if @project.save
+      redirect_to project_path(@project), alert: "Project successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
   end
 
   private
 
   def project_params
     params.require(:project).permit(:title, :description, :organization, :owner)
+  end
+
+  def set_project
+    @project = Project.find_by(id: params[:id])
   end
 end
