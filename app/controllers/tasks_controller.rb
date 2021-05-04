@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:show, :edit, :update, :advance_category, :destroy]
   def index
     if params[:project_id]
       @tasks = Project.find_by(id: params[:project_id]).tasks
@@ -21,40 +22,28 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find_by(id: params[:id])
   end
 
   def edit
-    @task = Task.find_by(id: params[:id])
   end
 
   def update
     @task.update(task_params)
     if @task.valid?
-      redirect_to project_tasks_path(@task.project), alert: "Task successfully updated."
+      redirect_to project_path(@task.project), alert: "Task successfully updated."
     else
       render :edit
     end
   end
 
   def advance_category
-    @task = Task.find_by(id: params[:id])
-    byebug
-    if @task.category == "Future"
-      @task.update(category: "Current")
-      redirect_to project_path(@task.project)
-    elsif @task.category == "Current"
-      @task.update(category: "Complete")
-      redirect_to project_path(@task.project)
-    elsif @task.category == "Complete"
-      redirect_to task_path(@task)
-    end
+    @task.next_category
+    redirect_to project_path(@task.project)
   end
 
   def destroy
-    task = Task.find_by(id: params[:id])
-    project = task.project
-    task.delete
+    project = @task.project
+    @task.delete
     redirect_to project_tasks_path(project)
   end
 
@@ -62,5 +51,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:user_id, :project_id, :due_date, :description, :priority, :category)
+  end
+
+  def set_task
+    @task = Task.find_by(id: params[:id])
   end
 end
