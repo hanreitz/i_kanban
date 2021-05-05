@@ -1,12 +1,21 @@
-<%= flash[:alert] if flash[:alert] %>
+<br>
+<% if @user == current_user %>
+  <h1>Welcome, <%= @user.first_name %>!</h1><br>
+  
+  <h3>My Project Boards:</h3>
+    <ul>
+      <%= render partial: 'project', collection: @user.owned_projects || "No current projects" %>
+    </ul>
 
-<%# Add logic to distinguish between page owner and page visitor, e.g., "Hannah's Projects" vs "My Projects" %>
-<h1>Welcome, <%= @user.first_name %>!</h1><br>
+<% else %>
+  <h1>You are viewing <%= @user.first_name %>'s public projects page!</h1><br>
 
-<h3>My Project Boards:</h3>
-<ul>
-  <%= render partial: 'project', collection: @user.owned_projects || "No current projects" %>
-</ul>
+  <h3><%= @user.first_name %>'s Project Boards:</h3>
+    <ul>
+      <%= render partial: 'project', collection: @user.owned_projects || "No current projects" %>
+    </ul>
+  <%= button_to "My Projects", user_path(current_user), method: :get %><br>
+<% end %>
 
-<%= button_to "Account", user_account_path, method: :get %><br>
+<%= button_to "Account", user_account_path(@user), method: :get %><br>
 <%= button_to "Log Out", logout_path, method: :post %>
