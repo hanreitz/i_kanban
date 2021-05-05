@@ -1,4 +1,9 @@
 class SessionsController < ApplicationController
+  def welcome
+    user = User.find_by(id: session[:user_id])
+    redirect_to user_path(user) unless user.nil?
+  end
+
   def new
   end
   

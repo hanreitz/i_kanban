@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'sessions#welcome'
+
   resources :tasks
   resources :projects, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :users
