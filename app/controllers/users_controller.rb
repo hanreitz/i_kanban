@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, only: [:show, :account, :edit, :update, :destroy]
-  before_action :set_user, only: [:show, :account, :edit, :update]
+  before_action :set_user, only: [:account, :edit, :update]
 
   def index
     @public_users = User.public_users
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
     @projects = @user.projects
   end
 
