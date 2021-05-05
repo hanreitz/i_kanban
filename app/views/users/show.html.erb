@@ -4,7 +4,11 @@
   
   <h3>My Project Boards:</h3>
     <ul>
-      <%= render partial: 'project', collection: @user.owned_projects || "No current projects" %>
+    <% if @user.owned_projects.empty? %>
+      <li>No current projects</li>
+    <% else %>
+      <%= render partial: 'project', collection: @user.owned_projects %>
+    <% end %>
     </ul>
 
 <% else %>
@@ -12,6 +16,10 @@
 
   <h3><%= @user.first_name %>'s Project Boards:</h3>
     <ul>
-      <%= render partial: 'project', collection: @user.owned_projects || "No current projects" %>
+    <% if @user.owned_projects.empty? %>
+      <li>No current projects</li>
+    <% else %>
+      <%= render partial: 'project', collection: @user.owned_projects %>
+    <% end %>
     </ul>
 <% end %>

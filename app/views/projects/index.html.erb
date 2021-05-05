@@ -1,5 +1,10 @@
 <br>
-<h3>Current Projects:</h3>
-<ul>
-  <%= render partial: 'users/project', collection: @projects || "No current projects" %>
-</ul>
+<h1>iKanBan Projects</h1>
+<h3>Click a project name to see details or add tasks.</h3>
+  <ul>
+  <% if @projects.empty? %>
+    <li>No current projects</li>
+  <% else %>
+    <%= render partial: 'users/project', collection: @projects %>
+  <% end %>
+  </ul>
