@@ -14,5 +14,4 @@
     <ul>
       <%= render partial: 'project', collection: @user.owned_projects || "No current projects" %>
     </ul>
-  <%= button_to "My Projects", user_path(current_user), method: :get %><br>
 <% end %>
