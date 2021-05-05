@@ -13,5 +13,12 @@
   <body>
     <%= flash_alert? %>
     <%= yield %>
+    <div class="navbar">
+      <% if current_user %>
+        <%= button_to "My Projects", user_path(current_user), method: :get, form: {style: 'display:inline-block;'} %>
+        <%= button_to "Account", user_account_path(current_user), method: :get, form: {style: 'display:inline-block;'} %>
+        <%= button_to "Log Out", logout_path, method: :post, form: {style: 'display:inline-block;'} %>
+      <% end %>
+    </div>
   </body>
 </html>
