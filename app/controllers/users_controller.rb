@@ -22,11 +22,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    if @user.public == true
-      @projects = @user.projects
-    else
-      redirect_to user_path(current_user), alert: "User not found."
-    end
+    @projects = @user.projects
+    redirect_to user_path(current_user), alert: "User not found." unless @user.public
   end
 
   def account
