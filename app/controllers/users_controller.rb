@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :account, :edit, :update]
 
   def index
-    @public_users = User.select {|u| u.public == true }
+    @public_users = User.public_users
   end
   
   def new

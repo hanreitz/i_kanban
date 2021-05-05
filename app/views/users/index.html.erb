@@ -1,4 +1,7 @@
 <br>
+<h1>iKanBan Users</h1>
+<h3>Click a username to see their current projects!</h3>
 <% @public_users.each do |user| %>
   <%= link_to user.username, user_path(user) %>
 <% end %>
+<p><em>Note: this list does not include users with private accounts.</em></p>
