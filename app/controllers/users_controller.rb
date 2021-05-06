@@ -56,10 +56,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :first_name, :last_name, :email, :organization, :password, :password_confirmation, :public)
   end
 
-  def require_login
-    redirect_to login_path, alert: "You must be logged in to view this page." unless session.include?(:user_id)
-  end
-
   def set_user
     @user = current_user
   end
