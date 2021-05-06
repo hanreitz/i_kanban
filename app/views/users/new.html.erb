@@ -11,7 +11,9 @@
   </div>
 <% end %>
 
+<h1>iKanBan Signup</h1>
+<h3>Sign up to take full advantage of iKanBan's features!</h3>
 <%= form_for @user do |f| %>
-  <%= render partial: 'form', locals: {f: f} %>
+  <%= render partial: 'form', locals: {f: f} %><br><br>
   <%= f.submit "Create New User" %>
 <% end %>
