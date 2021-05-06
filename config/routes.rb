@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'sessions#welcome'
 
-  resources :tasks, only: [:create, :edit, :update, :destroy]
+  resources :tasks, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :projects, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :users
 
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post '/back-category', to: 'tasks#back_category', as: 'back_category'
 
   resources :projects, only: [:show] do
-    resources :tasks, only: [:index, :new, :show]
+    resources :tasks, only: [:new, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
