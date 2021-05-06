@@ -8,6 +8,8 @@
 <%= render partial: 'task', locals: {type: "Complete"} %>
 
 <div style="width: 100%; float: left">
+<% if current_user %>
   <%= button_to "Add Task", new_project_task_path(project_id: @project.id), method: :get %>
+<% end %>
   <br><br><br>
-  </div>
+</div>
