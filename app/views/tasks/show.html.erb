@@ -10,7 +10,7 @@ Due <%= @task.due_date %><br><br>
 
 Stage in Process: <%= @task.category %> Task<br><br>
 
-<%= button_to "Back to Project", project_path(@task.project), method: :get, form: {style: 'display:inline-block;'} %>
+<%= button_to "Back to Project", project_path(@task.project), method: :get, form: {style: 'display:inline-block;'} unless !@task.project %>
 
 <% if @task.user == current_user %>
   <%= button_to "Edit Task", edit_task_path(@task), method: :get, form: {style: 'display:inline-block;'} %>
