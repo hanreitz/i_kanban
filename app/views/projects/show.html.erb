@@ -1,11 +1,9 @@
 <br>
 <h2 style="text-align: center"><%= @project.title %></h2>
 
-<%= render partial: 'task', locals: {type: "Future"} %>
-
-<%= render partial: 'task', locals: {type: "Current"} %>
-
-<%= render partial: 'task', locals: {type: "Complete"} %>
+<% categories.each do |c| %>
+  <%= render partial: 'task', locals: {type: "#{c}"} %>
+<% end %>
 
 <div style="width: 100%; float: left">
 <% if current_user %>
