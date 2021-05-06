@@ -10,6 +10,9 @@ Due <%= @task.due_date %><br><br>
 
 Stage in Process: <%= @task.category %> Task<br><br>
 
-<%= button_to "Edit Task", edit_task_path(@task), method: :get, form: {style: 'display:inline-block;'} %>
-<%= button_to "Delete Task", task_path(@task), method: :delete, form: {style: 'display:inline-block;'}, data: {confirm: 'Are you sure?'} %>
-<br><br><br>
+<% if @task.user == current_user %>
+  <%= button_to "Back to Project", project_task_path(@task.project, @task), method: :get, form: {style: 'display:inline-block;'} %>
+  <%= button_to "Edit Task", edit_task_path(@task), method: :get, form: {style: 'display:inline-block;'} %>
+  <%= button_to "Delete Task", task_path(@task), method: :delete, form: {style: 'display:inline-block;'}, data: {confirm: 'Are you sure?'} %>
+<% end %>
+  <br><br><br>
