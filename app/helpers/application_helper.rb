@@ -8,8 +8,4 @@ module ApplicationHelper
     flash[:alert] ? flash[:alert] : ""
   end
 
-  def categories
-    ["Future", "Current", "Complete"]
-  end
-
 end
