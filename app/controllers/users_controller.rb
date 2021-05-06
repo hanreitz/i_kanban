@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @projects = @user.projects
+    @next_five = Task.next_five_tasks(@user)
     redirect_to user_path(current_user), alert: "User not found." unless @user.public || @user == current_user
   end
 

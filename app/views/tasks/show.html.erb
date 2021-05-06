@@ -8,5 +8,6 @@ Due <%= @task.due_date %><br><br>
 
 Stage in Process: <%= @task.category %> Task<br><br>
 
-<%= button_to "Edit Task", edit_task_path(@task), method: :get %><br>
-<%= button_to "Delete Task", task_path(@task), method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= button_to "Edit Task", edit_task_path(@task), method: :get, form: {style: 'display:inline-block;'} %>
+<%= button_to "Delete Task", task_path(@task), method: :delete, form: {style: 'display:inline-block;'}, data: {confirm: 'Are you sure?'} %>
+<br><br><br>

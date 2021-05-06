@@ -2,12 +2,19 @@
 <% if @user == current_user %>
   <h1>Welcome, <%= @user.first_name %>!</h1><br>
   <%= button_to "New Project", new_project_path, method: :get %>
-  <h3>My Project Boards:</h3>
+  <h3>My Project Boards</h3>
     <ul>
     <% if @user.owned_projects.empty? %>
       <li>No current projects</li>
     <% else %>
       <%= render partial: 'project', collection: @user.owned_projects %>
+    <% end %>
+    </ul>
+  
+  <h3>My Next Five Tasks</h3>
+    <ul>
+    <% @next_five.each do |t| %>
+      <li><%= link_to "#{t.description}", project_task_path(project_id: t.project.id, id: t.id) %>, due <%= t.due_date %>, priority: <%= t.priority %></li>
     <% end %>
     </ul>
 
