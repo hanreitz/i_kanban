@@ -1,12 +1,5 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :advance_category, :back_category, :destroy]
-  def index
-    if params[:project_id]
-      @tasks = Project.find_by(id: params[:project_id]).tasks
-    else
-      @tasks = Task.all
-    end
-  end
 
   def new
     @task = Task.new(project_id: params[:project_id], user_id: current_user.id)
