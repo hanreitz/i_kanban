@@ -11,7 +11,7 @@ class Task < ApplicationRecord
   def change_category(data)
     category_array = ["Future", "Current", "Complete"]
     category_index = category_array.find_index("#{self.category}")
-    forward_index = category_index + 1 unless category_index == 2
+    forward_index = category_index + 1 unless category_index == category_array.length - 1
     backward_index = category_index - 1 unless category_index == 0
     if data == "+"
       self.update(category: category_array[forward_index])
@@ -19,4 +19,7 @@ class Task < ApplicationRecord
       self.update(category: category_array[backward_index])
     end
   end
+  # in the future, this method could take in data and a category_array
+  # that way the user could set their own categories and the back and forward buttons
+  # would still work
 end
