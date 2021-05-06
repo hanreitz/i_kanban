@@ -12,4 +12,8 @@ module ApplicationHelper
     ["Future", "Current", "Complete"]
   end
 
+  def task_priority(task)
+    Task::PRIORITY.find {|p| p[1] == task.priority}[0]
+  end
+
 end

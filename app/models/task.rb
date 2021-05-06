@@ -8,6 +8,13 @@ class Task < ApplicationRecord
   scope :count_tasks_by_user, ->(user) { where(user_id: user.id).count }
   scope :count_tasks_by_project, ->(project) { where(project_id: project.id).count }
   scope :next_five_tasks, ->(user) { where(user_id: user.id).where("due_date > ?", Date.today).order(:due_date).limit(5)}
+  scope :order_by_due_date_and_priority, -> { order(:due_date).group(:priority) }
+
+  PRIORITY = [
+    ["High", 0],
+    ["Medium", 1],
+    ["Low", 2]
+  ]
 
   def change_category(data)
     category_array = ["Future", "Current", "Complete"]

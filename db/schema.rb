@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_29_203714) do
+ActiveRecord::Schema.define(version: 2021_05_06_150816) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_04_29_203714) do
     t.integer "project_id"
     t.date "due_date"
     t.string "description"
-    t.string "priority"
+    t.integer "priority"
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

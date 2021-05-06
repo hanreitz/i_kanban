@@ -14,7 +14,7 @@
   <h3>My Next Five Tasks</h3>
     <ul>
     <% @next_five.each do |t| %>
-      <li><%= link_to "#{t.description}", project_task_path(project_id: t.project.id, id: t.id) %>, due <%= t.due_date %>, priority: <%= t.priority %></li>
+      <li><%= link_to "#{t.description}", project_task_path(project_id: t.project.id, id: t.id) %>, due <%= t.due_date %>, priority: <%= task_priority(t) %></li>
     <% end %>
     </ul>
 
