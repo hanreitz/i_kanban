@@ -1,6 +1,8 @@
 <h4><%= @task.description %>, added by <%= link_to @task.user.username, user_path(@task.user) %></h4><br><br>
 
-Project Board: <%= @task.project.title %>, created by <%= link_to @task.project.owner_object.username, user_path(@task.project.owner_object) %><br><br>
+<% if @task.project %> 
+  Project Board: <%= @task.project.title %>, created by <%= link_to @task.project.owner_object.username, user_path(@task.project.owner_object) %><br><br>
+<% end %>
 
 Due <%= @task.due_date %><br><br>
 
