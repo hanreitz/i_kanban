@@ -9,22 +9,14 @@ class Task < ApplicationRecord
   scope :count_tasks_by_project, ->(project) { where(project_id: project.id).count }
 
   def change_category(data)
+    category_array = ["Future", "Current", "Complete"]
+    category_index = category_array.find_index("#{self.category}")
+    forward_index = category_index + 1 unless category_index == 2
+    backward_index = category_index - 1 unless category_index == 0
     if data == "+"
-      if self.category == "Future"
-        self.update(category: "Current")
-      elsif self.category == "Current"
-        self.update(category: "Complete")
-      elsif self.category == "Complete"
-        self
-      end
+      self.update(category: category_array[forward_index])
     elsif data == "-"
-      if self.category == "Future"
-        self
-      elsif self.category == "Current"
-        self.update(category: "Future")
-      elsif self.category == "Complete"
-        self.update(category: "Current")
-      end
+      self.update(category: category_array[backward_index])
     end
   end
 end
