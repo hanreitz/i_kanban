@@ -35,6 +35,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project.delete
+    redirect_to user_path(current_user), alert: "Project deleted."
   end
 
   private

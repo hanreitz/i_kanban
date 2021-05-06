@@ -2,6 +2,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :advance_category, :back_category, :destroy]
   before_action :require_login, only: [:new, :create, :edit, :update, :advance_category, :back_category, :destroy]
   
+  def index
+    @tasks = Task.select {|t| t.user.public}
+  end
+
   def new
     @task = Task.new(project_id: params[:project_id], user_id: current_user.id)
   end

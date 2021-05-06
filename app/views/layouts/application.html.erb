@@ -14,7 +14,7 @@
     <br>
     <%= flash_alert? %>
     <%= yield %>
-    <div class="navbar">
+    <div class="navbar" style="width:100%; float:left">
       <% if current_user %>
         <%= button_to "Home", user_path(current_user), method: :get, form: {style: 'display:inline-block;'} %>
         <%= button_to "Account", user_account_path(current_user), method: :get, form: {style: 'display:inline-block;'} %>
