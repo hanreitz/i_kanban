@@ -1,5 +1,5 @@
 <br>
-<h3>Login to iKanBan</h3>
+<h3>Login with iKanBan Account</h3>
 <%= form_for :user, url: login_path, method: :post do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %><br><br>
@@ -9,3 +9,6 @@
 
   <%= f.submit "Login" %>
 <% end %>
+
+<h3>Login with Google</h3>
+<%= button_to 'Google', '/auth/google_oauth2' %>
