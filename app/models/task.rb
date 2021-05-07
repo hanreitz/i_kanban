@@ -22,9 +22,11 @@ class Task < ApplicationRecord
     forward_index = category_index + 1 unless category_index == category_array.length - 1
     backward_index = category_index - 1 unless category_index == 0
     if data == "+"
-      self.update(category: category_array[forward_index])
+      f = forward_index ||= category_array.length - 1
+      self.update(category: category_array[f])
     elsif data == "-"
-      self.update(category: category_array[backward_index])
+      b = backward_index ||= 0
+      self.update(category: category_array[b])
     end
   end
   # in the future, this method could take in data and a category_array
