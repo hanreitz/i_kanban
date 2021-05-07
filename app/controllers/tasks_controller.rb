@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :advance_category, :back_category, :destroy]
   
   def index
-    @tasks = Task.select {|t| t.user.public}
+    @tasks = Project.public_projects.collect {|p| p.tasks }.flatten
   end
 
   def new
@@ -20,6 +20,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    redirect_to user_path(current_user), alert: 'You do not have access to view this task.' unless @task.project.owner_object.public 
   end
 
   def edit

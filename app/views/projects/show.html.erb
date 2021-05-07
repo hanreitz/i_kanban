@@ -10,7 +10,7 @@
 <% if current_user && current_user.id == @project.owner %>
   <%= button_to "Add Task", new_project_task_path(project_id: @project.id), method: :get, form: {style: 'display:inline-block;'} %>
   <%= button_to "Edit Project", edit_project_path(@project), method: :get, form: {style: 'display:inline-block;'} %>
-  <%= button_to "Delete Project", project_path(@project), method: :delete, form: {style: 'display:inline-block;'}, data: {confirm: 'Are you sure?'} %>
+  <%= button_to "Delete Project", project_path(@project), method: :delete, form: {style: 'display:inline-block;'}, data: {confirm: 'Are you sure? This will destroy the project and all associated tasks.'} %>
 <% elsif current_user %>
   <%= button_to "Add Task", new_project_task_path(project_id: @project.id), method: :get, form: {style: 'display:inline-block;'} %>
 <% end %>

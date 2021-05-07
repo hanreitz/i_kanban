@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def show 
+    redirect_to user_path(current_user), alert: 'You do not have access to view this project.' unless @project.owner_object.public || @project.owner_object == current_user
   end
 
   def edit
@@ -35,6 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project.tasks.each {|t| t.delete}
     @project.delete
     redirect_to user_path(current_user), alert: "Project deleted."
   end
