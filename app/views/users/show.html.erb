@@ -13,11 +13,11 @@
   
   <h3>My Upcoming Tasks</h3>
     <ul>
-    <% if @next_tasks.nil? %>
+    <% if @next_five_tasks.count == 0 %>
       <li>No upcoming tasks!</li>
     <% else %>
-      <% @next_tasks.each do |t| %>
-        <li><%= link_to "#{t.description}", project_task_path(project_id: t.project.id, id: t.id) %>, due <%= t.due_date %>, priority: <%= task_priority(t) %></li>  
+      <% @next_five_tasks.each do |t| %>
+        <li><%= link_to "#{t.description}", project_task_path(project_id: t.project_id, id: t.id) %>, due <%= t.due_date %>, priority: <%= task_priority(t) %></li>  
       <% end %>
     <% end %>
     </ul>

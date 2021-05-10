@@ -24,8 +24,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @projects = @user.projects
-    next_tasks = Task.next_tasks(@user)
-    next_tasks.count > 5 ? @task_list = next_tasks.limit(5) : @task_list = next_tasks
+    @next_five_tasks = Task.next_five_tasks(@user)
     redirect_to user_path(current_user), alert: "User not found." unless @user.public || @user == current_user
   end
 
