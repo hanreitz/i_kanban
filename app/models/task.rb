@@ -7,7 +7,7 @@ class Task < ApplicationRecord
   scope :category_tasks, ->(cat) { where(category: cat) }
   scope :count_tasks_by_user, ->(user) { where(user_id: user.id).count }
   scope :count_tasks_by_project, ->(project) { where(project_id: project.id).count }
-  scope :next_five_tasks, ->(user) { where(user_id: user.id).where("due_date > ?", Date.today).where("category != ?", "Complete").order(:due_date).limit(5)}
+  scope :next_tasks, ->(user) { where(user_id: user.id).where("due_date > ?", Date.today).where("category != ?", "Complete").order(:due_date)}
   scope :order_by_due_date_and_priority, -> { order(:due_date).order(:priority) }
 
   PRIORITY = [
