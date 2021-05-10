@@ -1,28 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+Welcome to iKanBan! This task board app can help you stay organized on a variety of projects, with and without colleagues. Please follow these instructions to install and run the app:
+~~~~~
+1. Run `bundle install` to install the necessary gems.
+2. Create a `.env` file and immediately add it to `gitignore` -- DO NOT make any commits before `.env` is added to `gitignore`.
+3. Use the Google Developer Console to create a new project (web application), then set up the OAuth consent screen. Once your project has been created, copy the Google Client ID and Google Client Secret and paste them into `.env` as `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`. They must be saved this way for Google OAuth to work in the app.
+4. Run rails s and navigate to http://localhost:3000 to get started. Have fun!
+~~~~~
+~~~~~
 # Specifications for the Rails Assessment
 
 Specs:
@@ -47,3 +32,4 @@ Confirm:
 - [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
+~~~~~
