@@ -5,5 +5,6 @@
 <%= @total_task_count %> task(s) created<br>
 <%= @complete_task_count %> task(s) completed<br><br>
 
-<%= button_to "Edit my account information", edit_user_path(@user), method: :get %><br>
-<%= button_to "Delete my account", user_path(@user), method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= button_to "Edit my account information", edit_user_path(@user), method: :get, form: {style: 'display:inline-block;'} %>
+<%= button_to "Delete my account", user_path(@user), method: :delete, data: {confirm: 'Are you sure?'}, form: {style: 'display:inline-block;'} %>
+<br><br><br>
