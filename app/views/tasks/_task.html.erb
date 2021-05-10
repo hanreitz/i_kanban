@@ -1,5 +1,5 @@
 <% if task.project %>
-  <li><%= link_to "#{task.description}", project_task_path(task.project, task) %></li>
+  <li><%= link_to "#{task.description}", project_task_path(task.project, task) %>, due: <%= task.due_date.strftime("%B %-d, %Y") %>, assigned to: <%= link_to "#{task.user.username}", user_path(task.user) %></li>
 <% else %>
-  <li><%= link_to "#{task.description}", task_path(task) %> - no project assigned</li>
+  <li><%= link_to "#{task.description}", task_path(task) %> - no project assigned, due: <%= task.due_date.strftime("%B %-d, %Y") %>, assigned to: <%= link_to "#{task.user.username}", user_path(task.user) %></li>
 <% end %>

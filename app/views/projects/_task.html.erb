@@ -7,7 +7,7 @@
   <%= button_to ">", {controller: :tasks, action: :advance_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
   </li>
     <ul>
-      <li>Due <%= t.due_date %>, <%= task_priority(t) %> Priority</li>
+      <li>Due <%= t.due_date.strftime("%B %-d, %Y") %>, <%= task_priority(t) %> Priority</li>
     </ul><br>
 <% end %>
 </ul>

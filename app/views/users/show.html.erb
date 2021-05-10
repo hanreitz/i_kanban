@@ -17,7 +17,7 @@
       <li>No upcoming tasks!</li>
     <% else %>
       <% @next_five_tasks.each do |t| %>
-        <li><%= link_to "#{t.description}", project_task_path(project_id: t.project_id, id: t.id) %>, due <%= t.due_date %>, priority: <%= task_priority(t) %></li>  
+        <li><%= link_to "#{t.description}", project_task_path(project_id: t.project_id, id: t.id) %>, due <%= t.due_date.strftime("%B %-d, %Y") %>, priority: <%= task_priority(t) %></li>  
       <% end %>
     <% end %>
     </ul>
