@@ -1,0 +1,61 @@
+<br>
+<h1 style="text-align: center"><%= @project.title %></h1>
+<h3 style="text-align: center"><%= @project.description %></h3>
+
+<div style="width: 33%; margin: auto">
+<%= button_to "Show All Tasks", project_path(@project), method: :get, form: {style: 'display:inline-block;'} %>
+<%= button_to "Add Task", new_project_task_path(project_id: @project.id), method: :get, form: {style: 'display:inline-block;'} %>
+<% if current_user && current_user.id == @project.owner %>
+  <%= button_to "Edit Project", edit_project_path(@project), method: :get, form: {style: 'display:inline-block;'} %>
+  <%= button_to "Delete Project", project_path(@project), method: :delete, form: {style: 'display:inline-block;'}, data: {confirm: 'Are you sure? This will destroy the project and all associated tasks.'} %>
+<% end %>
+  <br><br><br>
+</div>
+
+<div class="future" style="width: 33%; float: left">
+<h3>Future Tasks </h3>
+<ul>
+<% @future_tasks.each do |t| %>
+  <li><%= link_to "#{t.description}", project_task_path(project_id: t.project.id, id: t.id) %>  
+  <%= button_to "<", {controller: :tasks, action: :back_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
+  <%= button_to ">", {controller: :tasks, action: :advance_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
+  </li>
+    <ul>
+      <li>Due <%= t.due_date %>, <%= task_priority(t) %> Priority</li>
+    </ul><br>
+<% end %>
+</ul>
+<br><br>
+</div>
+
+<div class="current" style="width: 33%; float: left">
+<h3>Current Tasks </h3>
+<ul>
+<% @current_tasks.each do |t| %>
+  <li><%= link_to "#{t.description}", project_task_path(project_id: t.project.id, id: t.id) %>  
+  <%= button_to "<", {controller: :tasks, action: :back_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
+  <%= button_to ">", {controller: :tasks, action: :advance_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
+  </li>
+    <ul>
+      <li>Due <%= t.due_date %>, <%= task_priority(t) %> Priority</li>
+    </ul><br>
+<% end %>
+</ul>
+<br><br>
+</div>
+
+<div class="complete" style="width: 33%; float: left">
+<h3>Complete Tasks </h3>
+<ul>
+<% @complete_tasks.each do |t| %>
+  <li><%= link_to "#{t.description}", project_task_path(project_id: t.project.id, id: t.id) %>  
+  <%= button_to "<", {controller: :tasks, action: :back_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
+  <%= button_to ">", {controller: :tasks, action: :advance_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
+  </li>
+    <ul>
+      <li>Due <%= t.due_date %>, <%= task_priority(t) %> Priority</li>
+    </ul><br>
+<% end %>
+</ul>
+<br><br>
+</div>

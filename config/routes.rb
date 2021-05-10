@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/user/:id/account', to: 'users#account', as: 'user_account'
   post '/advance-category', to: 'tasks#advance_category', as: 'advance_category'
   post '/back-category', to: 'tasks#back_category', as: 'back_category'
+  get 'project/:id/my_tasks', to: 'projects#my_tasks', as: 'my_tasks'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 
   resources :projects, only: [:show] do

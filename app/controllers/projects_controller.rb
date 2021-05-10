@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  include ProjectsHelper
+
+  before_action :set_project, only: [:show, :edit, :update, :my_tasks, :destroy]
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -33,6 +35,12 @@ class ProjectsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def my_tasks
+    @future_tasks = Task.project_user_tasks(@project, current_user).category_tasks("Future").order_by_due_date_and_priority
+    @current_tasks = Task.project_user_tasks(@project, current_user).category_tasks("Current").order_by_due_date_and_priority
+    @complete_tasks = Task.project_user_tasks(@project, current_user).category_tasks("Complete").order_by_due_date_and_priority
   end
 
   def destroy
