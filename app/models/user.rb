@@ -15,4 +15,8 @@ class User < ApplicationRecord
     Project.where(owner: self.id)
   end
 
+  def contributor(project)
+    project.tasks.collect {|t| t.user_id}.include?(current_user.id)
+  end
+
 end
