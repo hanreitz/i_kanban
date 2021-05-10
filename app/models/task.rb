@@ -10,7 +10,7 @@ class Task < ApplicationRecord
   scope :next_five_tasks, ->(user) { where(user_id: user.id).where("due_date > ?", Date.today).where("category != ?", "Complete").order(:due_date).limit(5)}
   scope :order_by_due_date_and_priority, -> { order(:due_date).order(:priority) }
   scope :user_tasks, ->(user) { where(user_id: user.id)}
-  scope :project_user_tasks ->(project, user) { where(project_id: project.id).where(user_id: user.id}
+  scope :project_user_tasks, ->(project, user) { where(project_id: project.id).where(user_id: user.id) }
 
   PRIORITY = [
     ["High", 0],

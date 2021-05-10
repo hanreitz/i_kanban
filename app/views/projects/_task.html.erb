@@ -1,9 +1,7 @@
 <div class="#{type.lowercase}" style="width: 33%; float: left">
 <h3><%= type %> Tasks </h3>
 <ul>
-<% if current_user && !current_user.tasks.nil? %>
-  <p>My Tasks</p>
-  <% @project.task_type("#{type}").order_by_due_date_and_priority.user_tasks(current_user).each do |t| %>
+  <% @project.task_type("#{type}").order_by_due_date_and_priority.each do |t| %>
     <li><%= link_to "#{t.description}", project_task_path(project_id: t.project.id, id: t.id) %>  
     <%= button_to "<", {controller: :tasks, action: :back_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
     <%= button_to ">", {controller: :tasks, action: :advance_category, id: t.id}, method: :post, form: {style: 'display:inline-block;'} %>
@@ -12,7 +10,6 @@
       <li>Due <%= t.due_date.strftime("%B %-d, %Y") %>, <%= task_priority(t) %> Priority</li>
     </ul><br>
   <% end %>
-<% elsif 
 </ul>
 <br><br>
 </div>
