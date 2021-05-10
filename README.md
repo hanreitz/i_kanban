@@ -1,4 +1,4 @@
-# README
+# iKanBan README
 
 Welcome to iKanBan! This task board app can help you stay organized on a variety of projects, with and without colleagues. Please follow these instructions to install and run the app:
 ~~~~~
