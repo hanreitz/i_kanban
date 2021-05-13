@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      render :new, alert: "Incorrect password."
+      redirect_to login_path, alert: "Incorrect password."
     end
   end
 
