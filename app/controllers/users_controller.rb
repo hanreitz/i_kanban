@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(current_user)
     else
-      render :new, alert: "User could not be created."
+      render :new
     end
   end
 

@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project)
     else
-      render :new, alert: "Project could not be created."
+      render :new
     end
   end
 

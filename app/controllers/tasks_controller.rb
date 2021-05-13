@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to project_path(@task.project)
     else
-      render :new, alert: "Task could not be created."
+      render :new
     end
   end
 
